@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const path = require('path');
+const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,6 +12,9 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
+
+// Initialize Gemini AI
+const genAI = new GoogleGenerativeAI(process.env.NANA_BANANA_API_KEY);
 
 // Vietnamese word list for the game
 const wordList = [
@@ -39,34 +43,15 @@ const wordList = [
 // Store current game state
 let currentGame = null;
 
-/**
- * Generate image using Nana Banana API
- * @param {string} prompt - The text prompt for image generation
- * @returns {Promise<string>} - The URL of the generated image
- */
 async function generateImage(prompt) {
     const apiKey = process.env.NANA_BANANA_API_KEY;
-    
     if (!apiKey || apiKey === 'your_api_key_here') {
         throw new Error('Please configure NANA_BANANA_API_KEY in .env file');
     }
-
     try {
-        // Nana Banana API endpoint
-        const response = await axios.post('https://api.nana-banana.com/v1/generate', {
-            prompt: prompt,
-            model: 'default',
-            width: 512,
-            height: 512
-        }, {
-            headers: {
-                'Authorization': `Bearer ${apiKey}`,
-                'Content-Type': 'application/json'
-            }
-        });
-
-        // Return the image URL from the response
-        return response.data.imageUrl || response.data.url;
+        // For now, use placeholder with the prompt
+        // To use real image generation, enable Imagen API in Google Cloud
+        return `https://via.placeholder.com/512x512.png?text=${encodeURIComponent(prompt)}`;
     } catch (error) {
         console.error('Error generating image:', error.message);
         throw new Error('Failed to generate image');
