@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhìn Hình Đoán Chữ - Picture Guessing Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Nhìn Hình Đoán Chữ</h1>
+            <p class="subtitle">Picture Guessing Game</p>
+        </header>
+
+        <div class="game-container">
+            <!-- Loading State -->
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Đang tải trò chơi...</p>
+            </div>
+
+            <!-- Game Area -->
+            <div id="gameArea" class="game-area" style="display: none;">
+                <!-- Image Display -->
+                <div class="image-container">
+                    <img id="gameImage" src="" alt="Hình ảnh gợi ý" class="game-image">
+                </div>
+
+                <!-- Word Input Area -->
+                <div class="word-input-container">
+                    <div id="wordInput" class="word-input"></div>
+                </div>
+
+                <!-- Letter Bank -->
+                <div class="letter-bank-container">
+                    <h3>Chọn chữ cái:</h3>
+                    <div id="letterBank" class="letter-bank"></div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="actions">
+                    <button id="checkBtn" class="btn btn-primary">Kiểm Tra</button>
+                    <button id="hintBtn" class="btn btn-secondary">Gợi Ý</button>
+                    <button id="newGameBtn" class="btn btn-success">Chơi Mới</button>
+                </div>
+
+                <!-- Message Display -->
+                <div id="message" class="message"></div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Powered by Nana Banana API • Made with ❤️</p>
+        </footer>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
